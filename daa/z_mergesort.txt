@@ -1,0 +1,40 @@
+mergesort(A, low, high){
+    if (low < high){
+        mid = (low + high) / 2
+        mergesort(A, low, mid)
+        mergesort(A, mid+1, high)
+        merge(A, low, mid, high)
+    }
+}
+
+
+merge(A, low, mid, high){
+
+    i = low
+    j = mid + 1
+    k = 0
+    temp = new array of size (high - low + 1)
+
+    while (i <= mid AND j <= high){
+        if A[i] <= A[j]
+            temp[k++] = A[i++]
+        else
+            temp[k++] = A[j++]
+    }
+
+    while (i <= mid)
+        temp[k++] = A[i++]
+
+    while (j <= high)
+        temp[k++] = A[j++]
+
+    for p = 0 to k-1
+        A[low + p] = temp[p]
+}
+
+
+T(n) = Θ(n log n)
+
+Best case: Θ(n log n)
+Worst case: Θ(n log n)
+Average: Θ(n log n)

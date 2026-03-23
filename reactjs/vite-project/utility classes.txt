@@ -1,0 +1,639 @@
+npx tsc --watch
+
+npx tailwindcss -i ./src/styles.css -o ./public/output.css --watch
+
+npx tailwindcss -i ./src/styles.css -o ./private/output.css --watch
+
+
+
+
+"scripts": {
+    "ts": "tsc --watch",
+    "tailwind:public": "tailwindcss -i ./src/styles.css -o ./public/output.css --watch",
+     "tailwind:private": "tailwindcss -i ./src/styles.css -o ./private/output.css --watch",
+    "start": "concurrently \"npm run ts\" \"npm run tailwind:public\" \"npm run tailwind:private\""
+  },
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+────────────────────────
+LAYOUT
+────────────────────────
+
+| Tailwind Utility | CSS Property          | Working (Brief)                      |
+| ---------------- | --------------------- | ------------------------------------ |
+| block            | display: block        | Takes full width, starts on new line |
+| inline           | display: inline       | Stays in same line, no width control |
+| inline-block     | display: inline-block | Inline element with width/height     |
+| flex             | display: flex         | Enables flexbox layout               |
+| grid             | display: grid         | Enables grid layout                  |
+| hidden           | display: none         | Completely removes element           |
+| container        | max-width + padding   | Centers content with fixed widths    |
+
+────────────────────────
+FLEXBOX
+────────────────────────
+
+| Utility         | CSS                            | Working (Brief)                |
+| --------------- | ------------------------------ | ------------------------------ |
+| flex-row        | flex-direction: row            | Aligns items horizontally      |
+| flex-col        | flex-direction: column         | Aligns items vertically        |
+| justify-start   | justify-content: flex-start    | Aligns items to start          |
+| justify-center  | justify-content: center        | Centers items horizontally     |
+| justify-between | justify-content: space-between | Equal space between items      |
+| items-start     | align-items: flex-start        | Aligns items to top            |
+| items-center    | align-items: center            | Aligns items vertically center |
+| items-end       | align-items: flex-end          | Aligns items to bottom         |
+| flex-wrap       | flex-wrap: wrap                | Wraps items to next line       |
+
+────────────────────────
+SPACING
+────────────────────────
+
+| Utility   | CSS                     | Working (Brief)              |
+| --------- | ----------------------- | ---------------------------- |
+| p-4       | padding                 | Inner spacing on all sides   |
+| pt-2      | padding-top             | Inner top spacing            |
+| pl-4      | padding-left            | Inner left spacing           |
+| m-4       | margin                  | Outer spacing on all sides   |
+| mt-2      | margin-top              | Outer top spacing            |
+| mx-auto   | margin-left/right: auto | Horizontally centers element |
+| space-x-4 | child gap (x-axis)      | Space between children       |
+
+────────────────────────
+SIZING
+────────────────────────
+
+| Utility    | CSS           | Working (Brief)         |
+| ---------- | ------------- | ----------------------- |
+| w-4        | width         | Sets fixed width        |
+| w-full     | width: 100%   | Takes full parent width |
+| h-10       | height        | Sets fixed height       |
+| h-screen   | height: 100vh | Full screen height      |
+| min-w-full | min-width     | Prevents shrinking      |
+| max-w-xl   | max-width     | Limits element width    |
+
+────────────────────────
+TYPOGRAPHY
+────────────────────────
+
+| Utility       | CSS            | Working (Brief)          |
+| ------------- | -------------- | ------------------------ |
+| text-sm       | font-size      | Small text size          |
+| text-xl       | font-size      | Large text size          |
+| font-bold     | font-weight    | Bold text                |
+| font-light    | font-weight    | Light text               |
+| text-center   | text-align     | Centers text             |
+| text-left     | text-align     | Left aligns text         |
+| leading-tight | line-height    | Reduces line spacing     |
+| tracking-wide | letter-spacing | Increases letter spacing |
+
+────────────────────────
+COLORS
+────────────────────────
+
+| Utility              | CSS               | Working (Brief)          |
+| -------------------- | ----------------- | ------------------------ |
+| text-blue-500        | color             | Colors text              |
+| bg-red-500           | background-color  | Colors background        |
+| border-gray-300      | border-color      | Colors border            |
+| placeholder-gray-400 | placeholder color | Styles input placeholder |
+
+────────────────────────
+BORDERS
+────────────────────────
+
+| Utility         | CSS           | Working (Brief)          |
+| --------------- | ------------- | ------------------------ |
+| border          | border-width  | Adds default border      |
+| border-2        | border-width  | Sets 2px border          |
+| border-blue-500 | border-color  | Colors border            |
+| rounded         | border-radius | Slightly rounded corners |
+| rounded-lg      | border-radius | Large rounded corners    |
+| rounded-full    | border-radius | Fully circular shape     |
+
+────────────────────────
+BACKGROUND
+────────────────────────
+
+| Utility      | CSS                 | Working (Brief)          |
+| ------------ | ------------------- | ------------------------ |
+| bg-blue-500  | background-color    | Applies background color |
+| bg-cover     | background-size     | Covers entire element    |
+| bg-center    | background-position | Centers background image |
+| bg-no-repeat | background-repeat   | Prevents repeating       |
+
+────────────────────────
+POSITIONING
+────────────────────────
+
+| Utility  | CSS      | Working (Brief)                 |
+| -------- | -------- | ------------------------------- |
+| relative | position | Reference for absolute children |
+| absolute | position | Positioned relative to parent   |
+| fixed    | position | Fixed to viewport               |
+| top-0    | top      | Moves to top                    |
+| left-0   | left     | Moves to left                   |
+| z-10     | z-index  | Controls stacking order         |
+
+────────────────────────
+EFFECTS
+────────────────────────
+
+| Utility    | CSS        | Working (Brief)           |
+| ---------- | ---------- | ------------------------- |
+| shadow     | box-shadow | Adds shadow               |
+| shadow-lg  | box-shadow | Large shadow              |
+| opacity-50 | opacity    | Makes element transparent |
+| blur       | filter     | Applies blur effect       |
+| grayscale  | filter     | Removes colors            |
+
+────────────────────────
+TRANSITIONS & ANIMATION
+────────────────────────
+
+| Utility      | CSS                 | Working (Brief)           |
+| ------------ | ------------------- | ------------------------- |
+| transition   | transition-property | Enables smooth transition |
+| duration-300 | transition-duration | Sets animation speed      |
+| ease-in      | timing-function     | Slow start animation      |
+| animate-spin | animation           | Continuous rotation       |
+
+────────────────────────
+RESPONSIVE & STATE
+────────────────────────
+
+| Prefix  | Meaning | Working (Brief)           |
+| ------- | ------- | ------------------------- |
+| sm:     | ≥640px  | Applies on small screens  |
+| md:     | ≥768px  | Applies on medium screens |
+| lg:     | ≥1024px | Applies on large screens  |
+| hover:  | hover   | On mouse hover            |
+| focus:  | focus   | On focus                  |
+| active: | active  | While clicking            |
+
+────────────────────────
+OVERFLOW & SCROLL
+────────────────────────
+
+| Utility         | CSS             | Working (Brief)        |
+| --------------- | --------------- | ---------------------- |
+| overflow-hidden | overflow        | Hides extra content    |
+| overflow-auto   | overflow        | Scroll if needed       |
+| overflow-scroll | overflow        | Always shows scrollbar |
+| overflow-x-auto | overflow-x      | Horizontal scroll      |
+| overflow-y-auto | overflow-y      | Vertical scroll        |
+| scroll-smooth   | scroll-behavior | Smooth scrolling       |
+
+────────────────────────
+LISTS
+────────────────────────
+
+| Utility      | CSS             | Working (Brief) |
+| ------------ | --------------- | --------------- |
+| list-none    | list-style      | Removes bullets |
+| list-disc    | list-style-type | Bullet points   |
+| list-decimal | list-style-type | Numbered list   |
+| list-inside  | list-position   | Bullets inside  |
+| list-outside | list-position   | Bullets outside |
+
+────────────────────────
+TABLES
+────────────────────────
+
+| Utility         | CSS             | Working (Brief)        |
+| --------------- | --------------- | ---------------------- |
+| table           | display         | Enables table layout   |
+| table-auto      | table-layout    | Auto column sizing     |
+| table-fixed     | table-layout    | Fixed column width     |
+| border-collapse | border-collapse | Merges borders         |
+| border-separate | border-collapse | Keeps borders separate |
+
+────────────────────────
+FORMS
+────────────────────────
+
+| Utility            | CSS        | Working (Brief)       |
+| ------------------ | ---------- | --------------------- |
+| appearance-none    | appearance | Removes browser style |
+| outline-none       | outline    | Removes outline       |
+| focus:outline-none | outline    | Removes focus outline |
+| resize-none        | resize     | Prevents resizing     |
+| cursor-pointer     | cursor     | Hand cursor           |
+| cursor-not-allowed | cursor     | Disabled cursor       |
+
+────────────────────────
+OBJECT & MEDIA
+────────────────────────
+
+| Utility        | CSS             | Working (Brief)       |
+| -------------- | --------------- | --------------------- |
+| object-cover   | object-fit      | Crops to fill         |
+| object-contain | object-fit      | Fits without cropping |
+| object-center  | object-position | Centers media         |
+| aspect-square  | aspect-ratio    | Perfect square        |
+| aspect-video   | aspect-ratio    | Video ratio           |
+
+────────────────────────
+TRANSFORMS
+────────────────────────
+
+| Utility       | CSS       | Working (Brief)    |
+| ------------- | --------- | ------------------ |
+| scale-100     | transform | Normal size        |
+| scale-110     | transform | Enlarges element   |
+| rotate-45     | transform | Rotates element    |
+| translate-x-4 | transform | Moves horizontally |
+| translate-y-2 | transform | Moves vertically   |
+| skew-x-6      | transform | Tilts element      |
+
+────────────────────────
+FILTERS
+────────────────────────
+
+| Utility       | CSS    | Working (Brief)    |
+| ------------- | ------ | ------------------ |
+| blur-sm       | filter | Slight blur        |
+| brightness-75 | filter | Darkens element    |
+| contrast-125  | filter | Increases contrast |
+| saturate-150  | filter | Boosts colors      |
+| invert        | filter | Inverts colors     |
+
+────────────────────────
+
+────────────────────────
+BACKDROP FILTERS
+────────────────────────
+
+| Utility                | CSS                   | Working (Brief)                   |
+| ---------------------- | --------------------- | --------------------------------- |
+| backdrop-blur          | backdrop-filter: blur | Blurs background behind element   |
+| backdrop-brightness-75 | backdrop-filter       | Darkens background behind element |
+| backdrop-contrast-125  | backdrop-filter       | Increases background contrast     |
+
+────────────────────────
+SVG
+────────────────────────
+
+| Utility        | CSS                  | Working (Brief)               |
+| -------------- | -------------------- | ----------------------------- |
+| fill-current   | fill: currentColor   | SVG fills with text color     |
+| stroke-current | stroke: currentColor | SVG stroke matches text color |
+| stroke-2       | stroke-width: 2      | Sets SVG stroke thickness     |
+
+────────────────────────
+ACCESSIBILITY (A11y)
+────────────────────────
+
+| Utility             | CSS                  | Working (Brief)                             |
+| ------------------- | -------------------- | ------------------------------------------- |
+| sr-only             | visually hidden      | Hidden visually, readable by screen readers |
+| not-sr-only         | undo sr-only         | Makes element visible again                 |
+| pointer-events-none | pointer-events: none | Disables mouse interaction                  |
+| pointer-events-auto | pointer-events: auto | Enables mouse interaction                   |
+
+────────────────────────
+COLUMNS (MULTI-COLUMN LAYOUT)
+────────────────────────
+
+| Utility   | CSS             | Working (Brief)               |
+| --------- | --------------- | ----------------------------- |
+| columns-2 | column-count: 2 | Splits content into 2 columns |
+| columns-3 | column-count: 3 | Splits content into 3 columns |
+| gap-x-4   | column-gap      | Space between columns         |
+
+────────────────────────
+SCROLL SNAP
+────────────────────────
+
+| Utility        | CSS                 | Working (Brief)             |
+| -------------- | ------------------- | --------------------------- |
+| snap-x         | scroll-snap-type: x | Snap scrolling horizontally |
+| snap-y         | scroll-snap-type: y | Snap scrolling vertically   |
+| snap-center    | scroll-snap-align   | Centers snap position       |
+| snap-mandatory | scroll-snap-type    | Forces snap behavior        |
+
+────────────────────────
+INTERACTIVITY & STATES
+────────────────────────
+
+| Prefix        | Meaning       | Working (Brief)              |
+| ------------- | ------------- | ---------------------------- |
+| hover:        | hover         | Applies style on hover       |
+| focus:        | focus         | Applies style on focus       |
+| focus-within: | focus inside  | When child gets focus        |
+| active:       | active        | While clicking               |
+| disabled:     | disabled      | When element is disabled     |
+| group-hover:  | parent hover  | Child reacts to parent hover |
+| peer-focus:   | sibling focus | Reacts to sibling focus      |
+
+────────────────────────
+GRID (CORE ❗)
+────────────────────────
+
+| Utility               | CSS                   | Working (Brief)          |
+| --------------------- | --------------------- | ------------------------ |
+| grid-cols-3           | grid-template-columns | Creates 3 equal columns  |
+| grid-rows-2           | grid-template-rows    | Creates 2 rows           |
+| col-span-2            | grid-column           | Spans across 2 columns   |
+| row-span-3            | grid-row              | Spans across 3 rows      |
+| col-start-2           | grid-column-start     | Starts at column 2       |
+| col-end-4             | grid-column-end       | Ends at column 4         |
+| gap-4                 | gap                   | Space between grid items |
+| gap-x-6               | column-gap            | Horizontal gap only      |
+| gap-y-2               | row-gap               | Vertical gap only        |
+| place-items-center    | place-items           | Centers items in grid    |
+| place-content-between | place-content         | Spaces grid content      |
+
+────────────────────────
+FLEX ITEM CONTROL
+────────────────────────
+
+| Utility    | CSS         | Working (Brief)            |
+| ---------- | ----------- | -------------------------- |
+| grow       | flex-grow   | Item expands to fill space |
+| grow-0     | flex-grow   | Prevents item growth       |
+| shrink     | flex-shrink | Allows item to shrink      |
+| basis-1/2  | flex-basis  | Sets initial size          |
+| order-1    | order       | Changes item order         |
+| order-last | order       | Moves item to end          |
+
+────────────────────────
+DIVIDERS (BETWEEN CHILDREN)
+────────────────────────
+
+| Utility         | CSS           | Working (Brief)                     |
+| --------------- | ------------- | ----------------------------------- |
+| divide-x        | child borders | Vertical divider between children   |
+| divide-y        | child borders | Horizontal divider between children |
+| divide-gray-300 | divider color | Colors the divider                  |
+| divide-dashed   | border-style  | Dashed divider style                |
+
+────────────────────────
+RING (FOCUS RINGS 🔵)
+────────────────────────
+
+| Utility           | CSS               | Working (Brief)                |
+| ----------------- | ----------------- | ------------------------------ |
+| ring              | box-shadow        | Adds focus ring                |
+| ring-2            | ring width        | Thicker focus ring             |
+| ring-blue-500     | ring color        | Colors the ring                |
+| ring-offset-2     | ring-offset       | Space between ring and element |
+| ring-offset-white | ring-offset color | Colors ring gap                |
+
+────────────────────────
+OUTLINE
+────────────────────────
+
+| Utility          | CSS            | Working (Brief)                 |
+| ---------------- | -------------- | ------------------------------- |
+| outline          | outline-style  | Adds outline                    |
+| outline-2        | outline-width  | Sets outline thickness          |
+| outline-blue-500 | outline-color  | Colors outline                  |
+| outline-offset-4 | outline-offset | Gap between outline and element |
+
+────────────────────────
+TEXT DECORATION
+────────────────────────
+
+| Utility            | CSS                  | Working (Brief)    |
+| ------------------ | -------------------- | ------------------ |
+| underline          | text-decoration      | Underlines text    |
+| line-through       | text-decoration      | Strikes text       |
+| no-underline       | remove decoration    | Removes decoration |
+| decoration-red-500 | decoration color     | Colors underline   |
+| decoration-2       | decoration thickness | Thicker decoration |
+| underline-offset-4 | underline-offset     | Space below text   |
+
+────────────────────────
+TEXT & WHITESPACE
+────────────────────────
+
+| Utility           | CSS                 | Working (Brief)       |
+| ----------------- | ------------------- | --------------------- |
+| whitespace-nowrap | white-space         | Prevents line break   |
+| whitespace-pre    | white-space         | Preserves spacing     |
+| break-words       | word-break          | Breaks long words     |
+| break-all         | word-break          | Breaks anywhere       |
+| truncate          | overflow + ellipsis | Single-line ellipsis  |
+| text-ellipsis     | text-overflow       | Shows ... on overflow |
+
+────────────────────────
+FONT SYSTEM
+────────────────────────
+
+| Utility      | CSS                  | Working (Brief)     |
+| ------------ | -------------------- | ------------------- |
+| font-sans    | font-family          | Sans-serif font     |
+| font-serif   | font-family          | Serif font          |
+| font-mono    | font-family          | Monospace font      |
+| italic       | font-style           | Italic text         |
+| not-italic   | font-style           | Normal text         |
+| tabular-nums | font-variant-numeric | Equal-width numbers |
+
+────────────────────────
+BACKGROUND (ADVANCED)
+────────────────────────
+
+| Utility          | CSS                   | Working (Brief)       |
+| ---------------- | --------------------- | --------------------- |
+| bg-clip-text     | background-clip       | Clips bg to text      |
+| bg-clip-padding  | background-clip       | Clips to padding      |
+| bg-origin-border | background-origin     | Starts bg from border |
+| bg-fixed         | background-attachment | Fixed background      |
+| bg-local         | background-attachment | Scrolls with content  |
+
+────────────────────────
+BLEND & ISOLATION
+────────────────────────
+
+| Utility            | CSS            | Working (Brief)   |
+| ------------------ | -------------- | ----------------- |
+| mix-blend-multiply | mix-blend-mode | Darkens overlap   |
+| mix-blend-overlay  | mix-blend-mode | Blends colors     |
+| isolate            | isolation      | Isolates blending |
+| isolation-auto     | isolation      | Default blending  |
+
+────────────────────────
+SCROLL (ADVANCED)
+────────────────────────
+
+| Utility            | CSS                 | Working (Brief)          |
+| ------------------ | ------------------- | ------------------------ |
+| overscroll-auto    | overscroll-behavior | Default scroll behavior  |
+| overscroll-contain | overscroll-behavior | Prevents scroll chaining |
+| scroll-mt-4        | scroll-margin-top   | Offset anchor position   |
+| scroll-pt-6        | scroll-padding-top  | Padding for scroll snap  |
+
+────────────────────────
+
+────────────────────────
+TOUCH & SELECTION
+────────────────────────
+
+| Utility     | CSS          | Working (Brief)                |
+| ----------- | ------------ | ------------------------------ |
+| touch-none  | touch-action | Disables touch gestures        |
+| touch-pan-x | touch-action | Allows horizontal touch scroll |
+| select-none | user-select  | Prevents text selection        |
+| select-text | user-select  | Allows text selection          |
+
+────────────────────────
+FORM COLOR CONTROLS
+────────────────────────
+
+| Utility         | CSS          | Working (Brief)           |
+| --------------- | ------------ | ------------------------- |
+| accent-blue-500 | accent-color | Colors checkbox and radio |
+| caret-red-500   | caret-color  | Colors text cursor        |
+
+────────────────────────
+VISIBILITY & FLOAT
+────────────────────────
+
+| Utility     | CSS        | Working (Brief)               |
+| ----------- | ---------- | ----------------------------- |
+| visible     | visibility | Makes element visible         |
+| invisible   | visibility | Hides element but keeps space |
+| float-left  | float      | Floats element to left        |
+| float-right | float      | Floats element to right       |
+| clear-both  | clear      | Prevents floating overlap     |
+
+────────────────────────
+LAYOUT SAFETY / PERFORMANCE
+────────────────────────
+
+| Utility               | CSS         | Working (Brief)              |
+| --------------------- | ----------- | ---------------------------- |
+| contain-content       | contain     | Isolates content rendering   |
+| contain-layout        | contain     | Isolates layout calculations |
+| will-change-transform | will-change | Optimizes upcoming transform |
+
+────────────────────────
+PRINT & MEDIA
+────────────────────────
+
+| Utility      | CSS         | Working (Brief)              |
+| ------------ | ----------- | ---------------------------- |
+| print:hidden | print media | Hides element when printing  |
+| print:block  | print media | Shows as block when printing |
+
+
+────────────────────────
+GRADIENTS (MODERN UI)
+────────────────────────
+
+| Utility           | CSS Property       | Working (Brief)                        |
+| ----------------- | ------------------ | -------------------------------------- |
+| bg-gradient-to-r  | background-image   | Creates gradient from left to right    |
+| bg-gradient-to-tr | background-image   | Creates diagonal gradient to top-right |
+| from-blue-500     | --tw-gradient-from | Sets starting gradient color           |
+| via-purple-500    | --tw-gradient-via  | Sets middle gradient color             |
+| to-pink-500       | --tw-gradient-to   | Sets ending gradient color             |
+
+────────────────────────
+TYPOGRAPHY STRATEGY (ADVANCED)
+────────────────────────
+
+| Utility              | CSS Property   | Working (Brief)                 |
+| -------------------- | -------------- | ------------------------------- |
+| antialiased          | font-smoothing | Smooth font rendering (MacOS)   |
+| subpixel-antialiased | font-smoothing | Default sharper font rendering  |
+| indent-8             | text-indent    | Indents first line of text      |
+| hyphens-auto         | hyphens        | Automatically breaks long words |
+| content-none         | content        | Removes pseudo-element content  |
+
+────────────────────────
+GRID ALIGNMENT (ADVANCED)
+────────────────────────
+
+| Utility              | CSS Property      | Working (Brief)                    |
+| -------------------- | ----------------- | ---------------------------------- |
+| justify-items-center | justify-items     | Aligns grid items horizontally     |
+| align-content-center | align-content     | Aligns grid rows when space exists |
+| grid-flow-col        | grid-auto-flow    | Places items column-wise           |
+| auto-cols-min        | grid-auto-columns | Sets implicit column width         |
+
+────────────────────────
+BOX SIZING & SHADOWS
+────────────────────────
+
+| Utility      | CSS Property | Working (Brief)                      |
+| ------------ | ------------ | ------------------------------------ |
+| box-border   | box-sizing   | Includes padding & border in width   |
+| box-content  | box-sizing   | Excludes padding & border from width |
+| shadow-inner | box-shadow   | Shadow inside the element            |
+| opacity-0    | opacity      | Fully transparent but occupies space |
+
+────────────────────────
+LOGICAL PROPERTIES (RTL FRIENDLY)
+────────────────────────
+
+| Utility    | CSS Property         | Working (Brief)           |
+| ---------- | -------------------- | ------------------------- |
+| ms-4       | margin-inline-start  | Margin at logical start   |
+| ps-2       | padding-inline-start | Padding at logical start  |
+| text-start | text-align           | Aligns text to flow start |
+
+────────────────────────
+
+────────────────────────
+ARBITRARY CUSTOM VALUES ( `[]` SYNTAX )
+────────────────────────
+
+| Purpose      | Utility Syntax      | Example                             | CSS Generated               | When to Use           |
+| ------------ | ------------------- | ----------------------------------- | --------------------------- | --------------------- |
+| Width        | w-[value]           | w-[37px]                            | width: 37px;                | Non-standard widths   |
+| Height       | h-[value]           | h-[60vh]                            | height: 60vh;               | Viewport-based sizing |
+| Margin       | m-[value]           | m-[13px]                            | margin: 13px;               | Odd spacing values    |
+| Padding      | p-[value]           | p-[1.25rem]                         | padding: 1.25rem;           | Custom padding        |
+| Font size    | text-[value]        | text-[22px]                         | font-size: 22px;            | Exact typography      |
+| Line height  | leading-[value]     | leading-[1.8]                       | line-height: 1.8;           | Readability tuning    |
+| Color        | text-[#hex]         | text-[#ff5733]                      | color: #ff5733;             | Brand colors          |
+| Background   | bg-[#hex]           | bg-[#121212]                        | background-color            | Custom dark themes    |
+| Border       | border-[value]      | border-[3px]                        | border-width: 3px;          | Custom borders        |
+| Border color | border-[#hex]       | border-[#00ffcc]                    | border-color                | Exact border color    |
+| Radius       | rounded-[value]     | rounded-[14px]                      | border-radius: 14px;        | Custom rounding       |
+| Z-index      | z-[value]           | z-[999]                             | z-index: 999;               | Layer control         |
+| Shadow       | shadow-[value]      | shadow-[0_4px_20px_rgba(0,0,0,0.3)] | box-shadow                  | Custom shadows        |
+| Transform    | translate-x-[value] | translate-x-[37px]                  | transform: translateX(37px) | Precise movement      |
+| Grid         | grid-cols-[value]   | grid-cols-[200px_1fr]               | grid-template-columns       | Custom grid layout    |
+| Animation    | animate-[name]      | animate-[wiggle]                    | animation                   | Custom keyframes      |
+| Content      | content-[value]     | content-['Hi']                      | content: "Hi"               | Pseudo-elements       |
+
+────────────────────────
+
+────────────────────────
+HIGH-PRIORITY CLASSES LEFT OUT
+────────────────────────
+
+| Utility/Category | CSS                      | Working (Brief)          | Why Important                 |
+| ---------------- | ------------------------ | ------------------------ | ----------------------------- |
+| flex-1           | flex: 1 1 0%             | Equal flex growth/shrink | Most used flex item utility!  |
+| flex-none        | flex: none               | No grow/shrink           | Prevents flex changes         |
+| self-center      | align-self: center       | Centers single flex item | Common centering fix          |
+| gap-4            | gap                      | Grid/flex child spacing  | Universal spacing king        |
+| sticky           | position: sticky         | Sticks during scroll     | Sidebar/navbar essential      |
+| inset-0          | top/right/bottom/left: 0 | Full parent coverage     | Absolute positioning shortcut |
+| cursor-default   | cursor: default          | Normal cursor            | Resets custom cursors         |
+
+────────────────────────

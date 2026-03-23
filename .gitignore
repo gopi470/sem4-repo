@@ -1,0 +1,50 @@
+# 🔹 OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 🔹 Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.bak
+*.out
+
+# 🔹 Build / compiled files
+*.o
+*.obj
+*.exe
+*.class
+*.dll
+*.so
+*.a
+
+# 🔹 C / C++ specific
+*.out
+*.dSYM/
+a.out
+
+# 🔹 Editor / IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# 🔹 Dependency folders (if any)
+node_modules/
+venv/
+env/
+
+# 🔹 Cache folders
+.cache/
+__pycache__/
+
+# 🔹 Archives
+*.zip
+*.tar
+*.gz
+*.rar
+
+# 🔹 Misc
+*.pid
+*.seed

@@ -1,0 +1,9 @@
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+
+
+FROM
+WHERE
+GROUP BY
+HAVING ⬅️ alias not available yet here       ❌ You CANNOT define alias inside HAVING
+SELECT ⬅️ alias is created here
+ORDER BY ⬅️ alias CAN be used here

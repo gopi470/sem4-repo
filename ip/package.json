@@ -1,0 +1,25 @@
+{
+  "name": "~ip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts": "tsc --watch",
+    "tailwind:public": "tailwindcss -i ./src/styles.css -o ./public/output.css --watch",
+    "start": "concurrently \"npm run ts\" \"npm run tailwind:public\" \"npm run tailwind:private\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
+  }
+}

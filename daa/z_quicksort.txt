@@ -1,0 +1,43 @@
+quicksort(A, low, high){
+    if low < high{
+        s <- partition(A, low, high)
+        quicksort(A, low, s-1)
+        quicksort(A, s+1, high)
+    }
+}
+
+
+partition(A, lw, hg){
+
+    p <- A[lw]
+    low <- lw + 1
+    high <- hg
+
+    while true{
+
+        while low <= hg AND A[low] <= p
+            low <- low + 1
+
+        while A[high] > p
+            high <- high - 1
+    
+        if low >= high
+            break
+
+        swap(A[low], A[high])
+    }
+
+    swap(A[lw], A[high])
+
+    return high
+}
+
+
+
+
+| Case    | Time complexity |
+| ------- | --------------- |
+| Best    | Θ(n log n)      |
+| Average | Θ(n log n)      |
+| Worst   | Θ(n²)           |
+

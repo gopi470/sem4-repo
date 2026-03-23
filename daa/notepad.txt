@@ -1,0 +1,153 @@
+Built-in Methods
+
+
+# 1. Common Python Built-in Functions
+
+| Function      | Purpose           | Example          |
+| ------------- | ----------------- | ---------------- |
+| `print()`     | Display output    | `print("Hello")` |
+| `input()`     | Read input        | `x = input()`    |
+| `len()`       | Length of object  | `len([1,2,3])`   |
+| `type()`      | Get data type     | `type(10)`       |
+| `int()`       | Convert to int    | `int("5")`       |
+| `float()`     | Convert to float  | `float("3.2")`   |
+| `str()`       | Convert to string | `str(100)`       |
+| `list()`      | Convert to list   | `list("abc")`    |
+| `tuple()`     | Convert to tuple  | `tuple([1,2])`   |
+| `set()`       | Convert to set    | `set([1,1,2])`   |
+| `dict()`      | Create dict       | `dict(a=1)`      |
+| `max()`       | Max value         | `max(3,7,2)`     |
+| `min()`       | Min value         | `min(3,7,2)`     |
+| `sum()`       | Sum elements      | `sum([1,2,3])`   |
+| `sorted()`    | Sort iterable     | `sorted([3,1])`  |
+| `range()`     | Number sequence   | `range(1,5)`     |
+| `abs()`       | Absolute value    | `abs(-5)`        |
+| `pow()`       | Power             | `pow(2,3)`       |
+| `round()`     | Round value       | `round(2.6)`     |
+| `enumerate()` | Index + value     | `enumerate(lst)` |
+| `zip()`       | Combine iterables | `zip(a,b)`       |
+| `any()`       | Any true          | `any([0,1])`     |
+| `all()`       | All true          | `all([1,1])`     |
+
+---
+
+# 2. Complete & Frequently Used String Methods
+
+| Method         | Purpose                         | Example                   |
+| -------------- | ------------------------------- | ------------------------- |
+| `lower()`      | Convert to lowercase            | `"Hi".lower()`            |
+| `upper()`      | Convert to uppercase            | `"hi".upper()`            |
+| `title()`      | Title case                      | `"hello world".title()`   |
+| `capitalize()` | Capitalize first letter         | `"python".capitalize()`   |
+| `strip()`      | Remove both side spaces         | `" hi ".strip()`          |
+| `lstrip()`     | Remove left spaces              | `" hi".lstrip()`          |
+| `rstrip()`     | Remove right spaces             | `"hi ".rstrip()`          |
+| `replace()`    | Replace substring               | `"a-b".replace("-", "+")` |
+| `split()`      | Split string                    | `"a,b".split(",")`        |
+| `join()`       | Join iterable                   | `",".join(["a","b"])`     |
+| `find()`       | Find index (−1 if not found)    | `"abc".find("b")`         |
+| `index()`      | Find index (error if not found) | `"abc".index("b")`        |
+| `count()`      | Count substring                 | `"banana".count("a")`     |
+| `startswith()` | Check prefix                    | `"hello".startswith("h")` |
+| `endswith()`   | Check suffix                    | `"hello".endswith("o")`   |
+| `isalpha()`    | Only letters                    | `"abc".isalpha()`         |
+| `isdigit()`    | Only digits                     | `"123".isdigit()`         |
+| `isalnum()`    | Letters or digits               | `"a1".isalnum()`          |
+| `isspace()`    | Only spaces                     | `" ".isspace()`           |
+| `islower()`    | All lowercase                   | `"abc".islower()`         |
+| `isupper()`    | All uppercase                   | `"ABC".isupper()`         |
+| `swapcase()`   | Swap case                       | `"AbC".swapcase()`        |
+| `zfill()`      | Pad with zeros                  | `"5".zfill(3)`            |
+| `partition()`  | Split into 3 parts              | `"a-b-c".partition("-")`  |
+| `rpartition()` | Split from right                | `"a-b-c".rpartition("-")` |
+
+---
+
+# 3. **List (Array) Methods** – Complete & Important
+
+| Method               | Purpose                 | Example                  |
+| -------------------- | ----------------------- | ------------------------ |
+| `append()`           | Add element at end      | `lst.append(5)`          |
+| `extend()`           | Add multiple elements   | `lst.extend([1,2])`      |
+| `insert()`           | Insert at index         | `lst.insert(1,10)`       |
+| `remove()`           | Remove first occurrence | `lst.remove(3)`          |
+| `pop()`              | Remove by index         | `lst.pop()`              |
+| `clear()`            | Remove all elements     | `lst.clear()`            |
+| `index()`            | Index of value          | `lst.index(4)`           |
+| `count()`            | Count occurrences       | `lst.count(2)`           |
+| `sort()`             | Sort list               | `lst.sort()`             |
+| `sort(reverse=True)` | Sort descending         | `lst.sort(reverse=True)` |
+| `reverse()`          | Reverse list            | `lst.reverse()`          |
+| `copy()`             | Shallow copy            | `new = lst.copy()`       |
+
+---
+
+# 4. Frequently Used **List Operations (Not Methods but Important)**
+
+| Operation     | Purpose        | Example    |
+| ------------- | -------------- | ---------- |
+| Indexing      | Access element | `lst[0]`   |
+| Slicing       | Sublist        | `lst[1:4]` |
+| Concatenation | Join lists     | `a + b`    |
+| Repetition    | Repeat list    | `lst * 3`  |
+| Membership    | Check element  | `5 in lst` |
+| Length        | List size      | `len(lst)` |
+
+---
+
+
+# 5. Remaining **String Methods** (Rarely Listed, but Built-in)
+
+| Method           | Purpose                         | Example                         |
+| ---------------- | ------------------------------- | ------------------------------- |
+| `casefold()`     | Strong lowercase (Unicode-safe) | `"ß".casefold()`                |
+| `center()`       | Center align string             | `"hi".center(6, '-')`           |
+| `ljust()`        | Left align                      | `"hi".ljust(5, '.')`            |
+| `rjust()`        | Right align                     | `"hi".rjust(5, '.')`            |
+| `encode()`       | Encode string                   | `"abc".encode()`                |
+| `expandtabs()`   | Replace tabs with spaces        | `"a\tb".expandtabs(4)`          |
+| `format()`       | String formatting               | `"{}".format(5)`                |
+| `format_map()`   | Format using dict               | `"{a}".format_map({"a":1})`     |
+| `isalnum()`      | Alphanumeric check              | `"a1".isalnum()`                |
+| `isdecimal()`    | Decimal digits only             | `"123".isdecimal()`             |
+| `isnumeric()`    | Numeric check                   | `"²".isnumeric()`               |
+| `isidentifier()` | Valid variable name             | `"var1".isidentifier()`         |
+| `isprintable()`  | Printable characters            | `"abc".isprintable()`           |
+| `maketrans()`    | Translation table               | `str.maketrans("a","b")`        |
+| `translate()`    | Replace via table               | `"a".translate(table)`          |
+| `removeprefix()` | Remove prefix                   | `"pretext".removeprefix("pre")` |
+| `removesuffix()` | Remove suffix                   | `"text.py".removesuffix(".py")` |
+
+---
+
+
+# 6. Remaining **Dictionary Methods**
+
+| Method         | Purpose               | Example                  |
+| -------------- | --------------------- | ------------------------ |
+| `fromkeys()`   | Create dict from keys | `dict.fromkeys([1,2],0)` |
+| `setdefault()` | Get or insert key     | `d.setdefault("a",0)`    |
+| `popitem()`    | Remove last key-value | `d.popitem()`            |
+| `copy()`       | Shallow copy          | `d.copy()`               |
+
+---
+
+# 7. Remaining Set Methods
+
+| Method                          | Purpose               | Example                            |
+| ------------------------------- | --------------------- | ---------------------------------- |
+| `update()`                      | Add multiple elements | `s.update([1,2])`                  |
+| `intersection_update()`         | Update common items   | `a.intersection_update(b)`         |
+| `difference_update()`           | Remove common items   | `a.difference_update(b)`           |
+| `symmetric_difference()`        | Uncommon items        | `a.symmetric_difference(b)`        |
+| `symmetric_difference_update()` | Update uncommon       | `a.symmetric_difference_update(b)` |
+| `issubset()`                    | Subset check          | `a.issubset(b)`                    |
+| `issuperset()`                  | Superset check        | `a.issuperset(b)`                  |
+| `isdisjoint()`                  | No common items       | `a.isdisjoint(b)`                  |
+| `copy()`                        | Shallow copy          | `s.copy()`                         |
+| `pop()`                         | Remove random element | `s.pop()`                          |
+
+---
+
+
+
