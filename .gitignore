@@ -48,3 +48,8 @@ __pycache__/
 # 🔹 Misc
 *.pid
 *.seed
+
+#Google Drive temp files
+
+.tmp.drivedownload/
+.tmp.driveupload/
