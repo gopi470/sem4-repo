@@ -1,4 +1,4 @@
-@ Z:\dbms\z1.sql;
+@ C:\Users\HP\Documents\Sem 4\dbms\t1.sql;
 
 
 
