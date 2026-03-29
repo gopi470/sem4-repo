@@ -2,20 +2,19 @@
 
 import time
 
+def iterative(arr, lenn, n):
+    left = 0
+    right = lenn - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == n:
+            return mid
+        elif arr[mid] > n:
+            right = mid - 1   
+        else:
+            left = mid + 1    
+    return -1
 
-def iterative(arr,lenn,n):
-    
-	left=0
-	right=lenn-1
-	while (left<=right):
-		mid=(left+right)//2
-		if (arr[mid]==n):
-			return mid
-		elif (arr[mid]>n):
-			left = mid + 1
-		else:
-			right = mid - 1
-	return -1
 
 def recursive(arr, n, left, right):
     if left > right:
@@ -32,6 +31,7 @@ def recursive(arr, n, left, right):
 
 
 arr = []
+arr.sort() 
 
 lenn=int(input("Enter the size :"))
 

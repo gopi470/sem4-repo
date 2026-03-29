@@ -1,4 +1,3 @@
-
 def safe(row,col,board):
     dupcol,duprow=col,row
 
