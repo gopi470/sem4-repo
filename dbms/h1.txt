@@ -1,0 +1,89 @@
+// Create Countries [cite: 1]
+CREATE (jm:Country {name: "Jamaica", code: "JM", continent: "America"})
+CREATE (us:Country {name: "USA", code: "US", continent: "America"})
+
+// Create Olympics [cite: 8]
+CREATE (rio:Olympics {year: 2016, location: "Rio de Janeiro"})
+CREATE (bei:Olympics {year: 2008, location: "Beijing"})
+
+// Create Events [cite: 5, 6]
+CREATE (e100m:Event {name: "100m Sprint", year: 2016, discipline: "Track and Field"})
+CREATE (e200m:Event {name: "200m Sprint", year: 2016, discipline: "Track and Field"})
+CREATE (eFly:Event {name: "100m Butterfly", year: 2008, discipline: "Swimming"})
+CREATE (eGym:Event {name: "All-Around Gymnastics", year: 2016, discipline: "Gymnastics"})
+
+// Link Events to Olympics [cite: 38]
+CREATE (e100m)-[:HELD_IN]->(rio), (e200m)-[:HELD_IN]->(rio), (eGym)-[:HELD_IN]->(rio)
+CREATE (eFly)-[:HELD_IN]->(bei)
+
+// Create Athletes and Relationships to Countries [cite: 2, 3, 4, 35]
+CREATE (bolt:Athlete {name: "Usain Bolt", birthdate: "1986-08-21", gender: "Male", sport: "Track and Field"})
+CREATE (bolt)-[:REPRESENTS]->(jm)
+
+CREATE (phelps:Athlete {name: "Michael Phelps", birthdate: "1985-06-30", gender: "Male", sport: "Swimming"})
+CREATE (phelps)-[:REPRESENTS]->(us)
+
+CREATE (biles:Athlete {name: "Simone Biles", birthdate: "1997-03-14", gender: "Female", sport: "Gymnastics"})
+CREATE (biles)-[:REPRESENTS]->(us)
+
+// Create Medals and Link to Athletes and Olympics [cite: 7, 37, 39]
+CREATE (m1:Medal {type: "Gold", year: 2016})
+CREATE (m2:Medal {type: "Gold", year: 2016})
+CREATE (m3:Medal {type: "Gold", year: 2008})
+CREATE (m4:Medal {type: "Gold", year: 2016})
+
+CREATE (bolt)-[:WON]->(m1), (m1)-[:AWARDED_IN]->(rio)
+CREATE (bolt)-[:WON]->(m2), (m2)-[:AWARDED_IN]->(rio)
+CREATE (phelps)-[:WON]->(m3), (m3)-[:AWARDED_IN]->(bei)
+CREATE (biles)-[:WON]->(m4), (m4)-[:AWARDED_IN]->(rio)
+
+// Athlete Participation [cite: 36]
+CREATE (bolt)-[:PARTICIPATED_IN]->(e100m), (bolt)-[:PARTICIPATED_IN]->(e200m)
+CREATE (phelps)-[:PARTICIPATED_IN]->(eFly)
+CREATE (biles)-[:PARTICIPATED_IN]->(eGym)
+
+
+
+MATCH (n)-[r]->(m)
+RETURN n, r, m
+LIMIT 100;
+
+
+// Cypher Queries
+
+// Retrieve All Athletes Who Won Gold in 2016 Olympics
+MATCH (a:Athlete)-[:WON]->(m:Medal {type: "Gold", year: 2016})
+RETURN DISTINCT a.name
+
+// Retrieve Usain Bolt's Medals
+MATCH (a:Athlete {name: "Usain Bolt"})-[:WON]->(m:Medal)
+RETURN m.type, m.year
+
+// Find All Events Participated in by Michael Phelps
+MATCH (a:Athlete {name: "Michael Phelps"})-[:PARTICIPATED_IN]->(e:Event)
+RETURN e.name, e.year
+
+// Find All Athletes Representing the USA
+MATCH (a:Athlete)-[:REPRESENTS]->(c:Country {name: "USA"})
+RETURN a.name
+
+// Find All Medals Awarded at the 2008 Beijing Olympics
+MATCH (m:Medal)-[:AWARDED_IN]->(o:Olympics {year: 2008, location: "Beijing"})
+RETURN m.type
+
+//List all Olympic Games held in a specific city (e.g., Rio de Janeiro)
+MATCH (o:Olympics {location: "Rio de Janeiro"})
+RETURN o.year
+
+// Get the city that hosted a specific game (e.g., 2008)
+MATCH (o:Olympics {year: 2008})
+RETURN o.location
+
+// Get all sports and their associated events
+MATCH (e:Event)
+RETURN e.discipline AS Sport, e.name AS EventName
+
+// Retrieve the NOC (Country) a specific athlete represented (e.g., Usain Bolt)
+MATCH (a:Athlete {name: "Usain Bolt"})-[:REPRESENTS]->(c:Country)
+RETURN c.name, c.code
+
