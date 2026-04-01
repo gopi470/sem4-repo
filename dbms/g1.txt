@@ -1,0 +1,119 @@
+
+1. Create Collection
+db.createCollection("employee")
+
+2. Insert First Document
+db.employee.insertOne({
+  eno: 1,
+  ename: "Arun",
+  salary: 45000,
+  desig: "Developer",
+  dept: { deptno: 101, deptname: "IT", location: "Chennai" },
+  project: [{ pname: "Banking_app", hrs: 45 }]
+})
+
+Insert Multiple Documents
+db.employee.insertMany([
+{
+  eno: 2,
+  ename: "Ajay",
+  salary: 60000,
+  desig: "Manager",
+  dept: { deptno: 102, deptname: "HR", location: "Delhi" },
+  project: [{ pname: "CRM", hrs: 30 }]
+},
+{
+  eno: 3,
+  ename: "Bala",
+  salary: 70000,
+  desig: "Manager",
+  dept: { deptno: 101, deptname: "IT", location: "Chennai" },
+  project: [{ pname: "Banking_app", hrs: 50 }]
+}
+])
+
+3. Display All
+db.employee.find()
+
+4. Name Starts with A
+db.employee.find({ ename: /^A/ })
+
+5. Manager Salary > 50000
+db.employee.find(
+  { desig: "Manager", salary: { $gt: 50000 } },
+  { ename: 1, desig: 1, salary: 1, _id: 0 }
+)
+
+6. Increase salary by 5000 if < 5000
+db.employee.updateMany(
+  { salary: { $lt: 5000 } },
+  { $inc: { salary: 5000 } }
+)
+
+7. Increase salary by 2%
+db.employee.updateMany(
+  {},
+  { $mul: { salary: 1.02 } }
+)
+
+8. Delete employees in Banking_app
+db.employee.deleteMany({
+  "project.pname": "Banking_app"
+})
+
+9. Sort by deptno
+db.employee.find().sort({ "dept.deptno": 1 })
+
+10. Highest Paid Employee
+db.employee.find()
+  .sort({ salary: -1 })
+  .limit(1)
+  .project({ ename: 1, salary: 1, _id: 0 })
+
+11. Employees count per department
+db.employee.aggregate([
+  {
+    $group: {
+      _id: "$dept.deptno",
+      count: { $sum: 1 }
+    }
+  }
+])
+
+12. Department with highest salary
+db.employee.aggregate([
+  {
+    $group: {
+      _id: "$dept.deptno",
+      totalSalary: { $sum: "$salary" }
+    }
+  },
+  { $sort: { totalSalary: -1 } },
+  { $limit: 1 }
+])
+
+13. Employees > 40 hrs
+db.employee.find(
+  { "project.hrs": { $gt: 40 } },
+  { ename: 1, "dept.deptno": 1, _id: 0 }
+).sort({ ename: -1 })
+
+14. NOT Chennai OR salary > 60000
+db.employee.find({
+  $or: [
+    { "dept.location": { $ne: "Chennai" } },
+    { salary: { $gt: 60000 } }
+  ]
+})
+
+15. Multiple projects
+db.employee.find({
+  "project.1": { $exists: true }
+})
+
+16. Same department as Arun
+var emp = db.employee.findOne({ ename: "Arun" })
+
+db.employee.find({
+  "dept.deptno": emp.dept.deptno
+})
