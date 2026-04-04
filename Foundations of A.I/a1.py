@@ -1,4 +1,5 @@
-g = {
+# Graph (DAG)
+G = {
     'A': ['B', 'C'],
     'B': ['D', 'G'],
     'C': ['B', 'D'],
@@ -6,70 +7,65 @@ g = {
     'G': []
 }
 
-count = {}
-for i in g:
-    count[i] = 0
+# --------------------------------------------------
+# 1. Exhaustive Enumerate (PPT Algorithm)
+# --------------------------------------------------
+def exhaustive_enumerate(path):
+    print(path)
+
+    v = path[-1]
+
+    for w in G[v]:
+        exhaustive_enumerate(path + [w])
 
 
-def iteratorsuccessor(node):
-    i = 0
-    while i < len(g[node]):
-        yield g[node][i]
-        i += 1
+# --------------------------------------------------
+# 2. Enumerate Search of Goal Node
+# --------------------------------------------------
+def enumerate_search(path):
+    v = path[-1]
 
-
-def enumerate_exhaustive(p, node):
-    p.append(node)
-    count[node] += 1
-
-    i = 0
-    while i < len(p):
-        print(p[i], end=" ")
-        i += 1
-    print()
-
-    for i in iteratorsuccessor(node):
-        enumerate_exhaustive(p, i)
-
-    p.pop()
-
-
-def enumerate_search(p, node):
-    p.append(node)
-
-    if node == 'G':
-        yield p[:]
+    if v == 'G':
+        yield path[:]
     else:
-        for i in iteratorsuccessor(node):
-            yield from enumerate_search(p, i)
-
-    p.pop()
+        for w in G[v]:
+            yield from enumerate_search(path + [w])
 
 
-print("DAG:", g, end="\n\n")
+# --------------------------------------------------
+# 3. Path Counts
+# --------------------------------------------------
+count = {node: 0 for node in G}
 
-print("Exhaustive Enumeration:")
-enumerate_exhaustive([], 'A')
+def count_paths(path):
+    v = path[-1]
 
-print()
-print("Path Counts:")
-for i in count:
-    print(i, ":", count[i])
+    count[v] += 1
 
-# for key, value in count.items():
-#     print(key, ":", value)
+    for w in G[v]:
+        count_paths(path + [w])
 
-print()
-print("Enumerate Search of the Goal Node:")
 
-s = enumerate_search([], 'A')
-while True:
-    p = next(s, "End")
-    if p == "End":
-        break
+# --------------------------------------------------
+# DRIVER CODE
+# --------------------------------------------------
+
+print("DAG:", G, "\n")
+
+# Exhaustive Enumeration
+print("Exhaustive Enumeration of Paths:")
+exhaustive_enumerate(['A'])
+
+
+# Enumerate Goal Paths
+print("\nEnumerate Search of the Goal Node:")
+for p in enumerate_search(['A']):
     print(p)
 
 
-# for p in enumerate_search([], 'A'):
-#     print(p)
+# Path Counts
+count_paths(['A'])
 
+print("\nPath Counts:")
+for k in count:
+    print(k, ":", count[k])
